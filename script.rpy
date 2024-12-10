@@ -12,6 +12,10 @@ define v = Character("Voice", color="#413e47")
 init:
     $ relationship_meter = 50 # Starting the meter at 50 (neutral).
 
+init:
+    image Ant Neutral = "Ant Neutral.png"
+    image Luz Neutral = "Luz Neutral.png"
+
 label relationship_status:
     if relationship_meter > 70:
         "The siblings are becoming familiar, their bond growing stonger than ever."
@@ -24,7 +28,7 @@ label relationship_status:
 
 label start:
     # Screen fades in from black to a night-time forest road, the headlights of the car cutting through the mist. Gentle rain falls, and distant thunder rumbles.
-    # Potential voice over?
+
     # Camera shifting to inside the car, showing the siblings. The older sister drives while the younger sibling sits in the passenger seat. Radio plays in the back but faintly.
     scene road_misty with fade
     show screen relationship_meter
@@ -36,13 +40,23 @@ label start:
     "{size=-5}Some wounds linger longer than they should.{/size}"
     "{size=-5}Resentment builds in the spaces between words-spoken, unspoken, and swallowed whole.{/size}"
     "{size=-5}For these two siblings, the weight of things done, said, and quietly repressed had festered into something unshakable. Tonight, that weight had surfaced again, threatening to pull them even further apart-or force them to confront all their misunderstandings.{/size}" 
+
+    scene car_interior with dissolve
+
+    play music "car_start.mp3" fadein 1.0 volume 1.0
+
+    show Luz Neutral at left # move up
+    show Ant Neutral at right # move up
+
     l "So, no greeting, huh? No, \"Hey, how are you?\""
+    play music "melancholy_theme.mp3" fadein 2.0
     a "(Looking out the window, avoiding her gaze)\n..."
     l "Well?"
     a "(without looking at her)\nSilence is better than pretending, don't you think?"
     a "Just focus on the road."
     l "(Tightening her grip on the steering wheel) \nPretending? You think that's what I'm doing?"
-    
+
+
     call Car_ride_choice
     hide screen relationship_meter
     "The tension between them was palpable, heavier than the mist clinging to the edges of the road. Neither noticed the dark shape darting across the road until it was too late."
@@ -50,8 +64,10 @@ label start:
 
 
 label chapter_one:
-    # insert the car sputter noise aka motorcycle sounds
 
+    play sound "rain_loop.mp3" loop
+    play music "dying_engine" volume 0.2
+    
     "The car jolted forward with a loud sputter. The dashboard lights flickered, the engine coughed, and then–silence. Only the sound of rain and the faint crackle of the radio remained."
     l "(angrily smacking the steering wheel)\nGreat. Perfect timing."
     a "(sarcastically)\nGuess it couldn't take the weight of this conversation either."
@@ -66,6 +82,7 @@ label chapter_one:
     "Luz popped the hood, rain drenching her as she peered inside. She called out over the storm."
     l "It's dead. We're not going anywhere tonight."
     a "(Stepping out of the car reluctantly)\nWhat now? No signal, no help. This just keeps getting better."
+    play sound "whispers.mp3" fadein 1.0 volume 0.2
     "A faint whispering sound drifted through the air, barely audible. Both siblings glanced uneasily toward the dark forest beyond the road."
    
     # As Ant and Luz start walking in separate directions, a strange noise echoes through the forest. Both freeze. Ant looks around nervously, while Luz’s confident facade falters.
@@ -78,6 +95,7 @@ label chapter_one:
 
     # The camera lingers on in the forest as the siblings reluctantly step off the road and into the shadows. The screen fades to black, with the sound of their footsteps fading into the mist.)
 
+    scene forest_path with fade
     "Realizing they were stranded and unwilling to face the unsettling sounds alone, the siblings ended up exploring together."
 
     # As they explore, they find a flashlight in an abandoned toolbox. This triggers a notification and adds the item to the inventory.
@@ -226,7 +244,7 @@ label check_ending:
 
 
 label good_ending:
-        "Ending 1: Reconciliation (Good Ending)"
+        "{size=+5}Ending 1: Reconciliation (Good Ending){/size}" 
         l "(softly)\nWe… we did it. Together."
         a "(nodding)\nI'm sorry, Luz. For everything. For blaming you."
         l "(sincerely)\nAnd I'm sorry for leaving. I thought I was protecting you, but I only hurt you more."
@@ -236,7 +254,7 @@ label good_ending:
         return
 
 label neutral_ending:
-        "Ending 2: Uneasy Balance (Neutral Ending)"
+        "{size=+5}Ending 2: Uneasy Balance (Neutral Ending){/size}" 
         l "(hesitantly)\nWe made it out...but it doens't feel over, does it?."
         a "(quietly)\nNo. There's still so much we haven't said. So much we haven't faced."
         "The siblings emerged from the forest together, but the mist clung faintly to their footsteps. The trials had forced them to confront their pain, yet the resolution felt incomplete."
@@ -248,7 +266,7 @@ label neutral_ending:
         return
 
 label bad_ending:
-        "Ending 3: Division (Bad Ending)"
+        "{size=+5}Ending 3: Division (Bad Ending){/size}" 
         l "(flatly)\nWell, we survived. That's something."
         a "(coldly)\nBarely. And only because we had to."
         "The bond between them remained fractured, the trials only deepening the cracks. The forest released them, but it's whispers lingered, a reminder of the wounds they refused to heal."

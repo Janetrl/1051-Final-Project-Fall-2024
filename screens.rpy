@@ -240,7 +240,7 @@ screen relationship_meter():
 
         vbox:
             spacing 5
-            text "Relationship Meter" size 20 color "#FFFFFF" xalign 0.5
+            text "Relationship Meter" size 20 color "#000000" xalign 0.5
             bar:
                 value relationship_meter 
                 range 100 
