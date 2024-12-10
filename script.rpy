@@ -66,6 +66,7 @@ label start:
 label chapter_one:
 
     play sound "rain_loop.mp3" loop
+    scene outside_car with fade
     play music "dying_engine" volume 0.2
     
     "The car jolted forward with a loud sputter. The dashboard lights flickered, the engine coughed, and then–silence. Only the sound of rain and the faint crackle of the radio remained."
@@ -105,7 +106,16 @@ label chapter_one:
 
     # [Transition from Chapter 1 to Chapter 2]
 
-    "As the siblings stepped deeper into the forest, the path behind them seemed to vanish into the mist. Every step forward felt heavier, as if the forest itself resisted their presence. Shadows danced at the edge of their vision, and the air carried whispers—soft, haunting, and impossibly familiar."
+    stop music fadeout 2.0
+    play music "eerie_theme.mp3" fadein 2.0 loop
+    play sound "forest_ambience.mp3" loop
+
+    scene forest_path2 with fade
+
+    "As the siblings stepped deeper into the forest, the path behind them seemed to vanish into the mist. Every step forward felt heavier, as if the forest itself resisted their presence."
+    show shadows_forest with fade
+    play sound "crunch_leafs.mp3" loop
+    "Shadows danced at the edge of their vision, and the air carried whispers—soft, haunting, and impossibly familiar."
     l "Keep up, Ant. We're not stopping every time you get spooked."
     a "(glaring)\nWho says I'm spooked? You're just marching ahead like you know where you're going. Newsflash, ya don't."
     "Despite their bickering, neither could shake the feeling the forest was alive, watching them, waiting for something."
@@ -117,9 +127,17 @@ label chapter_one:
 label chapter_two:
     # Chapter 2: The Forest's Secrets
     # [Setting the scene]
+    scene overgrown_path with fade
+    play sound "whispering_wind.mp3" loop
     "After what felt like hours of walking, the siblings stumbled upon an abandoned path, overgrown and barely visible. The whispers grew louder, threading through the trees like a melody of despair. Occasionally, they caught glimpses of something—shadows that weren't quite human."
+    show Ant Neutral at left
+    show Luz Neutral at right
+    with dissolve
+
     a "(whispering)\nDid you see that? There's something out there."
     l "(tightening her grip on the flashlight)\nIt's nothing, just your imagination. Let's keep going."
+    play sound "flashlight.mp3"
+    show haunted_house with fade
     "But the flashlight flickered, casting fleeting glimpses of a crumbling structure in the distance. A house, half consumed by the forest, stood waiting in the clearing. The air felt charged, heavy with secrets and dread."
 
     call stay_or_split_choice
@@ -127,18 +145,28 @@ label chapter_two:
     # show relationship meter status
 
     # [Both paths converge]
-
+    
     "Inside the decrepit house, they discovered remnants of the past—an old photograph of their great-grandmother, a tattered journal with half-erased writing, and symbols carved into the walls that seemed to pulse faintly in the dim light. The whispers became voices, clearer now, calling their names."
+    scene cabin_room with fade
+    play sound "creak.mp3" loop
+
+    show Ant Neutral at right
+    show Luz Neutral at left
+
     l "(reading the journal aloud)\n\'The curse thrives on what we bury. Only through the trials can it be broken.\'"
     a "(uneasily)\nTrials? What trials?"
+    play sound "floor_crack.mp3"
+    scene black with vpunch
+    stop sound
+
     "As if in response, the house shuddered, and the floor beneath them cracked open. The siblings fell, landing in a cavernous expanse that seemed to shift and change, the forest above now a distant memory."
-
+    scene cabin_room with fade
     jump last_chapter
-
 
 label last_chapter:
     # Chapter 3: Trials of the Forest
     # [Setting the Scene]
+
     "The cavern around them pulsed with an unnatural glow, the walls shifting like a living thing. A voice, deep and resonant, echoed in the chamber."
     v "You carry the weight of your bloodline—a legacy of pain, secrets, and division. To leave, you must face the truths you've hidden from yourselves and each other."
 
