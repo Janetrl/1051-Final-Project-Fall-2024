@@ -8,3 +8,12 @@ Tutorials followed for the overall use of Ren'Py (i.e. Basics, etc):
     https://youtu.be/_-hNdKUygxE?si=HFAHZ1Atpxjo4Mhk
 
 I skimmed around the Ren'Py overview page that appears on the screen when Ren'Py is downloaded.
+
+Assets from:
+
+  https://pixabay.com (i.e. The images, sounds, and music)
+  
+  Everything was for public usage
+
+Video:
+  
